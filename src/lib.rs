@@ -1,5 +1,5 @@
 
-extern crate sappers;
+extern crate sapper;
 extern crate url;
 
 use std::collections::HashMap;
@@ -7,7 +7,7 @@ use std::collections::hash_map::Entry::*;
 use url::form_urlencoded;
 
 
-use sappers::{Request, Result, Key};
+use sapper::{Request, Result, Key};
 
 pub type QueryMap = HashMap<String, Vec<String>>;
 

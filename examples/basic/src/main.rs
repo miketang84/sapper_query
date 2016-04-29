@@ -1,18 +1,18 @@
 
-extern crate sappers;
-extern crate sappers_query_params;
+extern crate sapper;
+extern crate sapper_query_params;
 extern crate env_logger;
 #[macro_use]
 extern crate log;
 
-use sappers::{SApp, SAppWrapper, Request, Response, Result};
+use sapper::{SApp, SAppWrapper, Request, Response, Result};
 
 
 
 mod biz;
 use biz::Biz;
 
-use sappers_query_params::{self as SappersQueryParams, QueryParams};
+use sapper_query_params::{self as SapperQueryParams, QueryParams};
 
 
 #[derive(Clone)]
@@ -22,7 +22,7 @@ struct MyApp;
 impl SAppWrapper for MyApp {
     fn before(&self, req: &mut Request) -> Result<()> {
         println!("{}", "in SAppWrapper before.");
-        SappersQueryParams::process(req).unwrap();
+        SapperQueryParams::process(req).unwrap();
         
         Ok(())
     }

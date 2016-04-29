@@ -1,14 +1,14 @@
 
-use sappers::Result;
-use sappers::SModule;
-use sappers::Request;
-use sappers::Response;
-use sappers::SRouter;
+use sapper::Result;
+use sapper::SModule;
+use sapper::Request;
+use sapper::Response;
+use sapper::SRouter;
 
 #[derive(Clone)]
 pub struct Biz;
 
-use sappers_query_params::QueryParams;
+use sapper_query_params::QueryParams;
 
 impl Biz {
     // those handlers in module Biz
