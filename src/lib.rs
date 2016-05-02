@@ -11,8 +11,8 @@ use sapper::{Request, Result, Key};
 
 pub type QueryMap = HashMap<String, Vec<String>>;
 
-pub struct QueryParams;
-impl Key for QueryParams { type Value = QueryMap; }
+pub struct ReqQueryParams;
+impl Key for ReqQueryParams { type Value = QueryMap; }
 
 pub fn process(req: &mut Request) -> Result<()> {
     
@@ -32,7 +32,7 @@ pub fn process(req: &mut Request) -> Result<()> {
                 };
             }
             
-            req.get_ext_mut().insert::<QueryParams>(deduplicated);
+            req.get_ext_mut().insert::<ReqQueryParams>(deduplicated);
         },
         None => {
             // do nothing

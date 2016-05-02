@@ -8,7 +8,7 @@ use sapper::SRouter;
 #[derive(Clone)]
 pub struct Biz;
 
-use sapper_query_params::QueryParams;
+use sapper_query_params::ReqQueryParams;
 
 impl Biz {
     // those handlers in module Biz
@@ -23,10 +23,10 @@ impl Biz {
     fn test(req: &mut Request) -> Result<Response> {
         // GET http://localhost:1337/test?a=1&b=2&c=3&a=4
         // Some({"a": ["1", "4"], "b": ["2"], "c": ["3"]})
-        println!("{:?}", req.get_ext().get::<QueryParams>());
+        println!("{:?}", req.get_ext().get::<ReqQueryParams>());
         
         // queries is now an Option<HashMap<String, Vec<String>>>
-        let queries = req.get_ext().get::<QueryParams>();
+        let queries = req.get_ext().get::<ReqQueryParams>();
         if queries.is_some() {
             
             // do something

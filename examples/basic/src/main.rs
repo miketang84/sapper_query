@@ -12,7 +12,6 @@ use sapper::{SApp, SAppWrapper, Request, Response, Result};
 mod biz;
 use biz::Biz;
 
-use sapper_query_params::{self as SapperQueryParams, QueryParams};
 
 
 #[derive(Clone)]
@@ -22,7 +21,7 @@ struct MyApp;
 impl SAppWrapper for MyApp {
     fn before(&self, req: &mut Request) -> Result<()> {
         println!("{}", "in SAppWrapper before.");
-        SapperQueryParams::process(req).unwrap();
+        sapper_query_params::process(req).unwrap();
         
         Ok(())
     }
