@@ -23,10 +23,10 @@ impl Biz {
     fn test(req: &mut Request) -> Result<Response> {
         // GET http://localhost:1337/test?a=1&b=2&c=3&a=4
         // Some({"a": ["1", "4"], "b": ["2"], "c": ["3"]})
-        println!("{:?}", req.get_ext().get::<ReqQueryParams>());
+        println!("{:?}", req.ext().get::<ReqQueryParams>());
         
         // queries is now an Option<HashMap<String, Vec<String>>>
-        let queries = req.get_ext().get::<ReqQueryParams>();
+        let queries = req.ext().get::<ReqQueryParams>();
         if queries.is_some() {
             
             // do something

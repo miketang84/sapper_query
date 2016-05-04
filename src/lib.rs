@@ -32,7 +32,7 @@ pub fn process(req: &mut Request) -> Result<()> {
                 };
             }
             
-            req.get_ext_mut().insert::<ReqQueryParams>(deduplicated);
+            req.ext_mut().insert::<ReqQueryParams>(deduplicated);
         },
         None => {
             // do nothing
