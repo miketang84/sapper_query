@@ -1,11 +1,11 @@
 
 extern crate sapper;
-extern crate sapper_query_params;
+extern crate sapper_query;
 extern crate env_logger;
 #[macro_use]
 extern crate log;
 
-use sapper::{SApp, SAppWrapper, Request, Response, Result};
+use sapper::{SapperApp, SapperAppShell, Request, Response, Result};
 
 
 
@@ -18,16 +18,16 @@ use biz::Biz;
 struct MyApp;
 // must impl it
 // total entry and exitice
-impl SAppWrapper for MyApp {
+impl SapperAppShell for MyApp {
     fn before(&self, req: &mut Request) -> Result<()> {
-        println!("{}", "in SAppWrapper before.");
-        sapper_query_params::process(req).unwrap();
+        println!("{}", "in SapperAppShell before.");
+        sapper_query::process(req).unwrap();
         
         Ok(())
     }
     
     fn after(&self, req: &Request, res: &mut Response) -> Result<()> {
-        println!("{}", "in SAppWrapper after.");
+        println!("{}", "in SapperAppShell after.");
         
         Ok(())
     }
@@ -38,13 +38,13 @@ impl SAppWrapper for MyApp {
 pub fn main() {
     env_logger::init().unwrap();
     
-    let mut sapp = SApp::new();
+    let mut sapp = SapperApp::new();
     sapp.address("127.0.0.1")
         .port(1337)
-        .with_wrapper(Box::new(MyApp))
+        .with_shell(Box::new(MyApp))
         .add_module(Box::new(Biz));
     
     println!("Listening on http://127.0.0.1:1337");
-    sapp.run();
+    sapp.run_http();
     
 }

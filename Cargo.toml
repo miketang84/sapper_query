@@ -1,9 +1,9 @@
 [package]
-name = "sapper_query_params"
+name = "sapper_query"
 version = "0.1.0"
 authors = ["Mike Tang <miketang84@outlook.com>"]
 
 [dependencies]
-url = "1.0"
+url = "*"
 
 sapper = { git="https://github.com/sappworks/sapper" }
