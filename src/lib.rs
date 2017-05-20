@@ -15,12 +15,13 @@ pub struct QueryParams;
 impl Key for QueryParams { type Value = QueryMap; }
 
 pub fn process(req: &mut Request) -> Result<()> {
+    let (_, query) = req.uri();
     
-    if req.query().is_none() {
+    if query.is_none() {
         return Ok(());
     }
     
-    let query_string = req.query().unwrap().to_owned();
+    let query_string = query.unwrap();
 
     let query_iter = form_urlencoded::parse(query_string.as_bytes());
 
@@ -49,3 +50,4 @@ mod tests {
     fn it_works() {
     }
 }
+
