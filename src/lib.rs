@@ -14,7 +14,7 @@ pub type QueryMap = HashMap<String, Vec<String>>;
 pub struct QueryParams;
 impl Key for QueryParams { type Value = QueryMap; }
 
-pub fn process(req: &mut Request) -> Result<()> {
+pub fn parse(req: &mut Request) -> Result<()> {
     let (_, query) = req.uri();
     
     if query.is_none() {
