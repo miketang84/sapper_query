@@ -2,9 +2,9 @@
 name = "sapper_query"
 version = "0.1.0"
 authors = ["Mike Tang <miketang84@outlook.com>"]
+license = "MIT"
 description = "Query parsing module for sapper web framework."
 
 [dependencies]
 url = "*"
-
 sapper = "0.1"
