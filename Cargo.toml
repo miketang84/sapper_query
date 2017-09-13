@@ -6,5 +6,5 @@ license = "MIT"
 description = "Query parsing module for sapper web framework."
 
 [dependencies]
-url = "*"
+url = "1.5"
 sapper = "0.1"
